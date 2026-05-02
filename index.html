@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corinna Underwood — Copywriter & Brand Strategist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1410;
+    --parchment: #f5f0e8;
+    --warm-mid: #e8dfd0;
+    --accent: #c4622d;
+    --accent-light: #e8845a;
+    --muted: #8a7f74;
+    --white: #fdfaf5;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--parchment);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  /* ── HEADER / HERO ── */
+  header {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 2.5rem 4rem;
+    background: var(--ink);
+    overflow: hidden;
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0; right: 0;
+    height: 80px;
+    background: var(--parchment);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+
+  .header-bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(8rem, 18vw, 22rem);
+    font-weight: 700;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.04);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--warm-mid);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-style: italic;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+  }
+
+  nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  nav a:hover { color: var(--accent-light); }
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    z-index: 2;
+    padding: 4rem 0 8rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 7vw, 7rem);
+    color: var(--white);
+    line-height: 1.0;
+    font-weight: 400;
+    max-width: 14ch;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent-light);
+  }
+
+  .hero-tagline {
+    margin-top: 2rem;
+    font-size: clamp(1rem, 1.8vw, 1.25rem);
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 42ch;
+    line-height: 1.7;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+
+  .hero-cta {
+    margin-top: 3rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--white);
+    padding: 0.9rem 2.2rem;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-light);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--muted);
+    padding-bottom: 2px;
+    transition: color 0.3s, border-color 0.3s;
+  }
+
+  .btn-secondary:hover {
+    color: var(--white);
+    border-color: var(--white);
+  }
+
+  .hero-stats {
+    position: absolute;
+    bottom: 8rem;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    opacity: 0;
+    animation: fadeLeft 0.8s 1s forwards;
+  }
+
+  .stat {
+    text-align: right;
+  }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--white);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.25rem;
+  }
+
+  /* ── MARQUEE ── */
+  .marquee-wrap {
+    background: var(--accent);
+    overflow: hidden;
+    padding: 1rem 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 25s linear infinite;
+  }
+
+  .marquee-item {
+    white-space: nowrap;
+    padding: 0 2rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white);
+    opacity: 0.85;
+  }
+
+  .marquee-item span {
+    margin: 0 1rem;
+    opacity: 0.5;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    position: relative;
+    z-index: 1;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 4rem;
+  }
+
+  /* ── ABOUT ── */
+  .about {
+    padding: 7rem 0;
+    background: var(--parchment);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .about-left h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+
+  .about-left h2 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .about-right p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: #4a4035;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+  }
+
+  .credentials {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .credential {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .credential::before {
+    content: '◆';
+    color: var(--accent);
+    font-size: 0.5rem;
+  }
+
+  /* ── SERVICES ── */
+  .services {
+    padding: 7rem 0;
+    background: var(--ink);
+  }
+
+  .services-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+  }
+
+  .services-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    color: var(--white);
+    font-weight: 400;
+    max-width: 12ch;
+    line-height: 1.15;
+  }
+
+  .services-header h2 em { color: var(--accent-light); font-style: italic; }
+
+  .services-intro {
+    max-width: 32ch;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .service-card {
+    background: var(--ink);
+    padding: 2.5rem;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--accent);
+    transition: height 0.4s;
+  }
+
+  .service-card:hover { background: #221e18; }
+  .service-card:hover::before { height: 100%; }
+
+  .service-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: rgba(255,255,255,0.05);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--white);
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+
+  .service-card p {
+    font-size: 0.875rem;
+    line-height: 1.75;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  /* ── SECTORS ── */
+  .sectors {
+    padding: 7rem 0;
+    background: var(--warm-mid);
+  }
+
+  .sectors h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 400;
+    margin-bottom: 3rem;
+    max-width: 18ch;
+    line-height: 1.2;
+  }
+
+  .sectors h2 em { font-style: italic; color: var(--accent); }
+
+  .sector-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 3rem;
+  }
+
+  .tag {
+    padding: 0.6rem 1.4rem;
+    border: 1px solid rgba(26,20,16,0.2);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    transition: all 0.3s;
+    cursor: default;
+  }
+
+  .tag:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--white);
+  }
+
+  .bylines {
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(26,20,16,0.15);
+  }
+
+  .bylines-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .byline-list {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .byline-list span {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #6b5f52;
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    padding: 8rem 0;
+    background: var(--parchment);
+  }
+
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .contact h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact h2 em { font-style: italic; color: var(--accent); }
+
+  .contact-body {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #4a4035;
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    background: var(--white);
+    border: 1px solid rgba(26,20,16,0.15);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.3s;
+    -webkit-appearance: none;
+  }
+
+  input:focus, textarea:focus {
+    border-color: var(--accent);
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: var(--muted);
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 130px;
+  }
+
+  .form-submit {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    padding: 2.5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .footer-links a {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: var(--accent-light); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeLeft {
+    from { opacity: 0; transform: translateX(24px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    header, .container, footer { padding-left: 2rem; padding-right: 2rem; }
+    .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .services-header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+    .hero-stats { position: static; flex-direction: row; gap: 3rem; margin-top: 3rem; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-bg-text" aria-hidden="true">WORDS</div>
+
+  <nav>
+    <div class="nav-logo">Corinna Underwood</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#sectors">Sectors</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <p class="hero-eyebrow">Copywriter &amp; Brand Strategist</p>
+    <h1>Creating copy,<br><em>shaping</em><br>brands.</h1>
+    <p class="hero-tagline">25+ years of SEO-driven content and strategic brand voice — helping agencies and businesses say the right thing to the right people.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Work With Me</a>
+      <a href="#services" class="btn-secondary">What I do</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-number">25+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">MA</div>
+      <div class="stat-label">Women's Studies</div>
+    </div>
+  </div>
+</header>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track">
+    <div class="marquee-item">SEO Copywriting <span>◆</span> Brand Strategy <span>◆</span> Content Strategy <span>◆</span> Health &amp; Wellness <span>◆</span> Tech &amp; SaaS <span>◆</span> Medical Content <span>◆</span> Lifestyle <span>◆</span> Home Services <span>◆</span></div>
+    <div class="marquee-item">SEO Copywriting <span>◆</span> Brand Strategy <span>◆</span> Content Strategy <span>◆</span> Health &amp; Wellness <span>◆</span> Tech &amp; SaaS <span>◆</span> Medical Content <span>◆</span> Lifestyle <span>◆</span> Home Services <span>◆</span></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-left reveal">
+        <p class="section-label">About</p>
+        <h2>Words that <em>work</em> as hard as you do.</h2>
+      </div>
+      <div class="about-right reveal">
+        <p>I'm Corinna Underwood — a freelance SEO copywriter and content strategist with over 25 years of experience building brand voices that resonate, convert, and endure. My background in Philosophy and Women's Studies gives me an analytical edge: I don't just write, I think through what your audience needs to hear and why.</p>
+        <p>I've worked with agencies including Viral MD and KlientBoost, and my writing has appeared in publications such as <em>Life Extension</em>, <em>Alternative Medicine</em>, and <em>Body Balance</em>. Whether you need a single landing page or a full content strategy, I bring craft and rigour to every word.</p>
+        <div class="credentials">
+          <div class="credential">MA Women's Studies — Staffordshire University, UK</div>
+          <div class="credential">BA Philosophy &amp; English Literature — Staffordshire University, UK</div>
+          <div class="credential">Agency clients: Viral MD, KlientBoost</div>
+          <div class="credential">Portfolio: ambiguousmedia.net</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-header reveal">
+      <h2>What I <em>do</em></h2>
+      <p class="services-intro">Strategic, search-optimised content built around your brand's voice and your audience's intent.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-number">01</div>
+        <h3>SEO Copywriting</h3>
+        <p>Search-optimised copy that ranks without reading like it was written for a robot. Landing pages, product pages, pillar content — written to convert and to last.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-number">02</div>
+        <h3>Content Strategy</h3>
+        <p>Audience analysis, keyword mapping, editorial calendars, and content architecture — the framework that makes every piece of content work harder.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-number">03</div>
+        <h3>Brand Voice &amp; Messaging</h3>
+        <p>Tone of voice development, brand messaging frameworks, and style guides that give your communications a distinctive, consistent identity.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-number">04</div>
+        <h3>Long-Form &amp; Editorial</h3>
+        <p>In-depth articles, whitepapers, guides, and thought leadership pieces — well-researched, well-structured, and written to establish authority.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-number">05</div>
+        <h3>Health &amp; Medical Content</h3>
+        <p>Accurate, accessible health and wellness copy with 25+ years of sector experience. From clinical explainers to patient-facing content.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-number">06</div>
+        <h3>Agency &amp; White-Label</h3>
+        <p>Reliable, deadline-driven content for agencies that need a trusted writing partner. I work to your style guides and integrate seamlessly with your workflow.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section class="sectors" id="sectors">
+  <div class="container">
+    <p class="section-label reveal">Sectors</p>
+    <h2 class="reveal">Expertise across <em>industries</em></h2>
+    <div class="sector-tags reveal">
+      <div class="tag">Health &amp; Wellness</div>
+      <div class="tag">Medical</div>
+      <div class="tag">Tech</div>
+      <div class="tag">SaaS</div>
+      <div class="tag">Lifestyle</div>
+      <div class="tag">Home Services</div>
+      <div class="tag">Alternative Medicine</div>
+      <div class="tag">Nutraceuticals</div>
+      <div class="tag">B2B</div>
+    </div>
+    <div class="bylines reveal">
+      <p class="bylines-label">Published in</p>
+      <div class="byline-list">
+        <span>Life Extension</span>
+        <span>Alternative Medicine</span>
+        <span>Body Balance</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="reveal">
+        <p class="section-label">Contact</p>
+        <h2>Let's build something <em>worth reading.</em></h2>
+        <p class="contact-body">Whether you have a brief ready or you're still figuring out what you need — get in touch. I'm always open to new projects, agency partnerships, and interesting briefs.</p>
+        <a href="mailto:hello@ambiguousmedia.net" class="btn-primary">hello@ambiguousmedia.net</a>
+      </div>
+      <div class="reveal">
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <input type="text" placeholder="Your name" required>
+            <input type="email" placeholder="Your email" required>
+          </div>
+          <input type="text" placeholder="Subject / project type">
+          <textarea placeholder="Tell me about your project..."></textarea>
+          <div class="form-submit">
+            <button type="submit" class="btn-primary">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Corinna Underwood</div>
+  <div class="footer-links">
+    <a href="https://ambiguousmedia.net" target="_blank">Portfolio</a>
+    <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Form
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type="submit"]');
+    btn.textContent = 'Sent ✓';
+    btn.style.background = '#4a7c59';
+    setTimeout(() => { btn.textContent = 'Send Message'; btn.style.background = ''; }, 3000);
+  }
+</script>
+</body>
+</html>
