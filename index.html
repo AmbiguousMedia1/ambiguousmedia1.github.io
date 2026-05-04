@@ -639,6 +639,110 @@
   }
 
   /* ── RESPONSIVE ── */
+  /* ── SAMPLES ── */
+  .samples {
+    padding: 7rem 0;
+    background: var(--ink);
+  }
+
+  .samples-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 3rem;
+    line-height: 1.2;
+  }
+
+  .samples-heading em { font-style: italic; color: var(--accent-light); }
+
+  .samples-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: 1.5rem;
+  }
+
+  .tab {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--muted);
+    padding: 0.5rem 1.2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .tab:hover { color: var(--white); border-color: rgba(255,255,255,0.4); }
+  .tab.active { background: var(--accent); border-color: var(--accent); color: var(--white); }
+
+  .samples-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .sample-card {
+    background: var(--ink);
+    padding: 2rem 2.5rem;
+    text-decoration: none;
+    display: block;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sample-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.4s;
+  }
+
+  .sample-card:hover { background: #221e18; }
+  .sample-card:hover::before { width: 100%; }
+
+  .sample-client {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .sample-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--white);
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+  }
+
+  .sample-arrow {
+    font-size: 0.8rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .sample-card:hover .sample-arrow { color: var(--accent-light); }
+
+  @media (max-width: 900px) {
+    .samples-grid { grid-template-columns: 1fr; }
+    .samples-tabs { gap: 0.4rem; }
+  }
+
   @media (max-width: 900px) {
     header, .container, footer { padding-left: 2rem; padding-right: 2rem; }
     .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
@@ -676,23 +780,14 @@
     </div>
   </div>
 
-  <div class="hero-stats">
-    <div class="stat">
-      <div class="stat-number">25+</div>
-      <div class="stat-label">Years Experience</div>
-    </div>
-    <div class="stat">
-      <div class="stat-number">MA</div>
-      <div class="stat-label">Women's Studies</div>
-    </div>
-  </div>
+
 </header>
 
 <!-- MARQUEE -->
 <div class="marquee-wrap" aria-hidden="true">
   <div class="marquee-track">
-    <div class="marquee-item">SEO Copywriting <span>◆</span> Brand Strategy <span>◆</span> Content Strategy <span>◆</span> Health &amp; Wellness <span>◆</span> Tech &amp; SaaS <span>◆</span> Medical Content <span>◆</span> Lifestyle <span>◆</span> Home Services <span>◆</span></div>
-    <div class="marquee-item">SEO Copywriting <span>◆</span> Brand Strategy <span>◆</span> Content Strategy <span>◆</span> Health &amp; Wellness <span>◆</span> Tech &amp; SaaS <span>◆</span> Medical Content <span>◆</span> Lifestyle <span>◆</span> Home Services <span>◆</span></div>
+    <div class="marquee-item">SEO Copywriting <span>◆</span> Brand Strategy <span>◆</span> Content Strategy <span>◆</span> Health &amp; Wellness <span>◆</span> Tech &amp; SaaS <span>◆</span> Medical Content <span>◆</span> Lifestyle <span>◆</span> Home Services <span>◆</span> White Papers <span>◆</span> Press Releases <span>◆</span> Blogs <span>◆</span></div>
+    <div class="marquee-item">SEO Copywriting <span>◆</span> Brand Strategy <span>◆</span> Content Strategy <span>◆</span> Health &amp; Wellness <span>◆</span> Tech &amp; SaaS <span>◆</span> Medical Content <span>◆</span> Lifestyle <span>◆</span> Home Services <span>◆</span> White Papers <span>◆</span> Press Releases <span>◆</span> Blogs <span>◆</span></div>
   </div>
 </div>
 
@@ -706,12 +801,11 @@
       </div>
       <div class="about-right reveal">
         <p>I'm Corinna Underwood — a freelance SEO copywriter and content strategist with over 25 years of experience building brand voices that resonate, convert, and endure. My background in Philosophy and Women's Studies gives me an analytical edge: I don't just write, I think through what your audience needs to hear and why.</p>
-        <p>I've worked with agencies including Viral MD and KlientBoost, and my writing has appeared in publications such as <em>Life Extension</em>, <em>Alternative Medicine</em>, and <em>Body Balance</em>. Whether you need a single landing page or a full content strategy, I bring craft and rigour to every word.</p>
+        <p>I've worked with agencies including TopFire Media, KlientBoost, Rocket, Ignite Visibility, Authority Domains, 9th Company, and Complete Consignment, and directly with clients such as Arctic Cold Caps, Balanced Diet Miami, Dr. Formulas, Eagle Eye Technologies, Emerj, Evans and Associates, Fast Growing Trees, Global Call Forwarding, Olive Oil Times, Pink Lotus, Rome International Film Festival, and WebMD. Whether you need a single landing page or a full content strategy, I bring craft and rigour to every word.</p>
         <div class="credentials">
           <div class="credential">MA Women's Studies — Staffordshire University, UK</div>
           <div class="credential">BA Philosophy &amp; English Literature — Staffordshire University, UK</div>
-          <div class="credential">Agency clients: Viral MD, KlientBoost</div>
-          <div class="credential">Portfolio: ambiguousmedia.net</div>
+
         </div>
       </div>
     </div>
@@ -748,8 +842,8 @@
       </div>
       <div class="service-card reveal">
         <div class="service-number">05</div>
-        <h3>Health &amp; Medical Content</h3>
-        <p>Accurate, accessible health and wellness copy with 25+ years of sector experience. From clinical explainers to patient-facing content.</p>
+        <h3>Cross-Industry Copy</h3>
+        <p>Versatile, research-driven content across health, wellness, tech, SaaS, lifestyle, and home services — bringing the same craft and strategic thinking to every sector.</p>
       </div>
       <div class="service-card reveal">
         <div class="service-number">06</div>
@@ -774,16 +868,37 @@
       <div class="tag">Home Services</div>
       <div class="tag">Alternative Medicine</div>
       <div class="tag">Nutraceuticals</div>
+      <div class="tag">Legal</div>
       <div class="tag">B2B</div>
     </div>
     <div class="bylines reveal">
       <p class="bylines-label">Published in</p>
       <div class="byline-list">
-        <span>Life Extension</span>
         <span>Alternative Medicine</span>
-        <span>Body Balance</span>
+        <span>Alive</span>
+        <span>True Shine</span>
+        <span>The Edge</span>
+        <span>Spiral Nature</span>
+        <span>V3</span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- SAMPLES -->
+<section class="samples" id="samples">
+  <div class="container">
+    <p class="section-label reveal">Work Samples</p>
+    <h2 class="samples-heading reveal">Writing across <em>every format</em></h2>
+    <div class="samples-tabs reveal">
+      <button class="tab active" data-tab="landing">Landing Pages</button>
+      <button class="tab" data-tab="b2b">B2B Content</button>
+      <button class="tab" data-tab="outlook">Industry Outlook</button>
+      <button class="tab" data-tab="longform">Long-Form</button>
+      <button class="tab" data-tab="seo">SEO Articles</button>
+      <button class="tab" data-tab="human">Human Interest</button>
+    </div>
+    <div class="samples-grid" id="samples-grid"></div>
   </div>
 </section>
 
@@ -794,8 +909,8 @@
       <div class="reveal">
         <p class="section-label">Contact</p>
         <h2>Let's build something <em>worth reading.</em></h2>
-        <p class="contact-body">Whether you have a brief ready or you're still figuring out what you need — get in touch. I'm always open to new projects, agency partnerships, and interesting briefs.</p>
-        <a href="mailto:hello@ambiguousmedia.net" class="btn-primary">hello@ambiguousmedia.net</a>
+        <p class="contact-body">I welcome enquiries from businesses and agencies at any stage, whether you have a detailed brief or simply want to explore possibilities.</p>
+        <a href="mailto:underwood@ambiguousmedia.net" class="btn-primary">underwood@ambiguousmedia.net</a>
       </div>
       <div class="reveal">
         <form class="contact-form" onsubmit="handleSubmit(event)">
@@ -825,6 +940,66 @@
 </footer>
 
 <script>
+  // Samples data
+  const samples = {
+    landing: [
+      { client: 'Guster Law Firm', title: 'Distracted Driving Lawyer', url: 'https://www.gusterlawfirm.com/car-accidents/distracted-driving/' },
+      { client: 'Sledge Tech', title: 'Control Combustible Dust with Filtration Systems', url: 'https://sledge-tech.com/how-to-control-combustible-dust' },
+      { client: 'The Ultimate Barber', title: 'Is a Barbering or Hair Salon Franchise Right for You?', url: 'https://theultimatebarberfranchise.com/blog/hair-salon-franchise/' },
+      { client: 'Kennedy Law Firm', title: 'Houston Banking Overtime Lawyer', url: 'https://kennedyattorney.com/houston-overtime-unpaid-wages-lawyer/banking/' },
+    ],
+    b2b: [
+      { client: 'Global Call Forwarding', title: 'Call Center Regulations', url: 'https://www.globalcallforwarding.com/blog/call-center-regulations/' },
+      { client: 'Global Call Forwarding', title: 'What to Do When You Make a Mistake with a Client', url: 'https://www.globalcallforwarding.com/learn/what-to-do-when-you-make-a-mistake-with-a-client/' },
+      { client: 'EcoGreen Lawn Care', title: 'Landscaping Franchise vs Lawn Care Franchise', url: 'https://ecogreenlawncarefranchise.com/blog/landscaping-franchise-or-lawn-care/' },
+      { client: 'Genemod', title: 'Why Do Laboratories Need Data Traceability?', url: 'https://genemod.net/blog/data-traceability' },
+    ],
+    outlook: [
+      { client: 'Emerj', title: 'Robots in Retail: Real Industry Applications', url: 'https://emerj.com/ai-sector-overviews/robots-in-retail-examples/' },
+      { client: 'Getlabs', title: 'What Is a Mobile Phlebotomist?', url: 'https://www.getlabs.com/blog/what-is-a-mobile-phlebotomist-what-do-they-do' },
+      { client: 'eHealthcare Strategy', title: 'Patient Portals in Practice', url: 'https://ehealthcarestrategy.com/short-takes-patient-portals-practice/' },
+      { client: 'Automotive Technology', title: 'Using AI and Machine Learning for Driver Safety', url: 'http://blog.automotive-technology.com/using-artificial-intelligence-and-machine-learning-for-driver-safety/' },
+    ],
+    longform: [
+      { client: 'Genemod', title: 'A Guide to Better Laboratories Management', url: 'https://genemod.net/blog/laboratories-management' },
+      { client: 'Juici Patties', title: 'Franchise Success: Why Strong Leadership Matters', url: 'https://juicipattiesfranchising.com/blog/franchise-success-why-strong-leadership/' },
+      { client: 'Emerj', title: 'Use Cases of Recommendation Systems in Business', url: 'https://emerj.com/ai-sector-overviews/use-cases-recommendation-systems/' },
+      { client: 'Pink Lotus Power Up', title: 'Going Flat: Saying No to Breast Reconstruction', url: 'https://pinklotus.com/powerup/breastcancer101/going-flat-saying-no-to-breast-reconstruction/' },
+    ],
+    seo: [
+      { client: 'OnTrack Bookkeeping', title: 'QuickBooks and WhatsApp for Your Small Business', url: 'https://ontrackbookkeeping.com/quickbooks-and-whatsapp-for-your-small-business/' },
+      { client: 'Dr. Jeff Werber', title: 'Talk to a Vet Wherever You Are 24/7 with airVet', url: 'https://drjeff.com/blogs/blog/talk-to-a-vet-wherever-you-are-24-7-with-airvet' },
+      { client: 'House Digest', title: 'Are Your Garage Lights Luring Hummingbirds Inside?', url: 'https://www.housedigest.com/1630306/garage-light-attracting-hummingbirds/' },
+      { client: 'Olive Oil Times', title: 'An Olive a Day: 7 Ways to Liven Your Week', url: 'https://www.oliveoiltimes.com/world/olive-day-7-ways-liven-week/53691' },
+    ],
+    human: [
+      { client: 'Alzheimer\'s Association Georgia', title: 'Living and Loving with Alzheimer\'s Disease: Kim\'s Story', url: 'https://alzga.wordpress.com/2015/09/08/living-and-loving-with-alzheimers-disease-kims-story/' },
+      { client: 'V3 Magazine', title: 'A Living Legacy', url: 'https://readv3.com/2016/07/a-living-legacy/' },
+      { client: 'V3 Magazine', title: 'Taste Bud Trends', url: 'https://readv3.com/2015/11/taste-bud-trends/' },
+    ],
+  };
+
+  function renderSamples(tab) {
+    const grid = document.getElementById('samples-grid');
+    grid.innerHTML = samples[tab].map(s => `
+      <a href="${s.url}" target="_blank" rel="noopener" class="sample-card">
+        <p class="sample-client">${s.client}</p>
+        <h3 class="sample-title">${s.title}</h3>
+        <p class="sample-arrow">Read sample →</p>
+      </a>
+    `).join('');
+  }
+
+  document.querySelectorAll('.tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      renderSamples(btn.dataset.tab);
+    });
+  });
+
+  renderSamples('landing');
+
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
